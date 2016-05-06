@@ -15,6 +15,7 @@ import (
 
 const tokenEnv string = "botToken"
 const urlEnv string = "botUrl"
+const portEnv string = "PORT"
 
 type User struct {
 	ChatID    int64
@@ -41,6 +42,11 @@ func main() {
 		log.Panic("URL ENV NOT FOUND!")
 	}
 
+	port := os.Getenv(portEnv)
+	if port == "" {
+		log.Panic("PORT ENV NOT FOUND!")
+	}
+
 	bot, err := tg.NewBotAPI(token)
 	if err != nil {
 		log.Panic(err)
@@ -57,7 +63,7 @@ func main() {
 
 	log.Printf("Listening to %s\n", "https://"+url+"/"+bot.Token)
 
-	updates := bot.ListenForWebhook("/" + bot.Token)
+	updates := bot.ListenForWebhook(":" + portEnv + "/" + bot.Token)
 	go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
 
 	/*
