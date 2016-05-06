@@ -55,16 +55,19 @@ func main() {
 
 	log.Printf("Authorized on account %s\n", bot.Self.UserName)
 
-	_, err = bot.SetWebhook(tg.NewWebhook("https://" + url + "/")) // +bot.Token, "cert.pem"
-	if err != nil {
-		log.Fatal(err)
-	}
+	/*
+		_, err = bot.SetWebhook(tg.NewWebhook("https://" + url + "/")) // +bot.Token, "cert.pem"
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	log.Printf("Webhook to %s\n", "https://"+url+"/") // +bot.Token
+		log.Printf("Webhook to %s\n", "https://"+url+"/") // +bot.Token
 
-	log.Printf("Serving to %s\n", ":"+port+"/") // +bot.Token
+		log.Printf("Serving to %s\n", ":"+port+"/") // +bot.Token
 
-	//updates := bot.ListenForWebhook("0.0.0.0:" + port + "/") //  +"/"+bot.Token
+		updates := bot.ListenForWebhook("0.0.0.0:" + port + "/") //  +"/"+bot.Token
+
+	*/
 
 	//go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
 
