@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net/http"
 	"os"
 
 	tg "github.com/go-telegram-bot-api/telegram-bot-api"
@@ -56,7 +55,7 @@ func main() {
 
 	log.Printf("Authorized on account %s\n", bot.Self.UserName)
 
-	_, err = bot.SetWebhook(tg.NewWebhookWithCert("https://"+url+"/", "cert.pem")) // +bot.Token
+	_, err = bot.SetWebhook(tg.NewWebhook("https://" + url + "/")) // +bot.Token, "cert.pem"
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -66,7 +65,8 @@ func main() {
 	log.Printf("Serving to %s\n", ":"+port+"/") // +bot.Token
 
 	updates := bot.ListenForWebhook(":" + port) //  +"/"+bot.Token
-	go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
+
+	//go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
 
 	/*
 		u := tg.NewUpdate(0)
