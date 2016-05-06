@@ -1,1 +1,1 @@
-web: sshclient
+web: sshclient -port=$PORT
