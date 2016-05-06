@@ -64,7 +64,7 @@ func main() {
 
 	log.Printf("Serving to %s\n", ":"+port+"/") // +bot.Token
 
-	updates := bot.ListenForWebhook(":" + port) //  +"/"+bot.Token
+	updates := bot.ListenForWebhook("0.0.0.0:" + port + "/") //  +"/"+bot.Token
 
 	//go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
 
