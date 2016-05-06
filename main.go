@@ -64,16 +64,14 @@ func main() {
 
 	log.Printf("Serving to %s\n", ":"+port+"/") // +bot.Token
 
-	updates := bot.ListenForWebhook("0.0.0.0:" + port + "/") //  +"/"+bot.Token
+	//updates := bot.ListenForWebhook("0.0.0.0:" + port + "/") //  +"/"+bot.Token
 
 	//go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
 
-	/*
-		u := tg.NewUpdate(0)
-		u.Timeout = 60
+	u := tg.NewUpdate(0)
+	u.Timeout = 60
 
-		updates, err := bot.GetUpdatesChan(u)
-	*/
+	updates, err := bot.GetUpdatesChan(u)
 
 	for update := range updates {
 		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
