@@ -1,0 +1,5 @@
+{
+  "name": "sshclient",
+  "description": "sshclient",
+  "image": "heroku/go:1.6"
+}
