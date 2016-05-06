@@ -55,6 +55,8 @@ func main() {
 
 	log.Printf("Authorized on account %s\n", bot.Self.UserName)
 
+	bot.RemoveWebhook()
+
 	/*
 		_, err = bot.SetWebhook(tg.NewWebhook("https://" + url + "/")) // +bot.Token, "cert.pem"
 		if err != nil {
