@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net/http"
 	"os"
 
 	tg "github.com/go-telegram-bot-api/telegram-bot-api"
@@ -13,6 +14,7 @@ import (
 )
 
 const tokenEnv string = "botToken"
+const urlEnv string = "botUrl"
 
 type User struct {
 	ChatID    int64
@@ -31,7 +33,12 @@ func main() {
 
 	token := os.Getenv(tokenEnv)
 	if token == "" {
-		log.Panic("TOKEN NOT FOUND!")
+		log.Panic("TOKEN ENV NOT FOUND!")
+	}
+
+	url := os.Getenv(urlEnv)
+	if url == "" {
+		log.Panic("URL ENV NOT FOUND!")
 	}
 
 	bot, err := tg.NewBotAPI(token)
@@ -43,10 +50,20 @@ func main() {
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
-	u := tg.NewUpdate(0)
-	u.Timeout = 60
+	_, err = bot.SetWebhook(tg.NewWebhookWithCert("https://"+url+"/"+bot.Token, "cert.pem"))
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	updates, err := bot.GetUpdatesChan(u)
+	updates := bot.ListenForWebhook("/" + bot.Token)
+	go http.ListenAndServeTLS("0.0.0.0:8443", "cert.pem", "key.pem", nil)
+
+	/*
+		u := tg.NewUpdate(0)
+		u.Timeout = 60
+
+		updates, err := bot.GetUpdatesChan(u)
+	*/
 
 	for update := range updates {
 		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
