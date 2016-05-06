@@ -1,0 +1,25 @@
+{
+	"ImportPath": "github.com/rafadev7/sshclient",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v63",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-telegram-bot-api/telegram-bot-api",
+			"Comment": "v4.2.1",
+			"Rev": "bf6e165e92e6da5dd62b859f8397f7c8864e4b04"
+		},
+		{
+			"ImportPath": "github.com/technoweenie/multipartstreamer",
+			"Comment": "v1.0.1",
+			"Rev": "a90a01d73ae432e2611d178c18367fbaa13e0154"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/curve25519",
+			"Rev": "2f6fccd33b9b1fc23ebb73ad4890698820f7174d"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh",
+			"Rev": "2f6fccd33b9b1fc23ebb73ad4890698820f7174d"
+		}
+	]
+}
