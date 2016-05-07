@@ -12,9 +12,11 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-const tokenEnv string = "botToken"
-const urlEnv string = "botUrl"
-const portEnv string = "PORT"
+const tokenEnv string = "TOKEN"
+
+//const urlEnv string = "URL"
+const ipEnv string = "OPENSHIFT_GO_IP"
+const portEnv string = "OPENSHIFT_GO_PORT"
 
 type User struct {
 	ChatID    int64
