@@ -1,1 +1,1 @@
-web: sshclient
+worker: sshclient
