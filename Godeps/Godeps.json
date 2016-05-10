@@ -4,6 +4,11 @@
 	"GodepVersion": "v63",
 	"Deps": [
 		{
+			"ImportPath": "github.com/braintree/manners",
+			"Comment": "0.4.0-13-g213a497",
+			"Rev": "213a497c0285defc24f640dbdb8a30f7d7080310"
+		},
+		{
 			"ImportPath": "github.com/go-telegram-bot-api/telegram-bot-api",
 			"Comment": "v4.2.1",
 			"Rev": "bf6e165e92e6da5dd62b859f8397f7c8864e4b04"
