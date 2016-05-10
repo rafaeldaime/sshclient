@@ -63,7 +63,7 @@ func main() {
 		w.Write([]byte("pong"))
 	})
 	mux.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("<a href=\"https://www.uptimia.com/\" target=\"_blank\"><img src=\"https://www.uptimia.com/status?hash=54bd14d2474753185fb6a66b9239a3f8\" width=\"130\" height=\"auto\" alt=\"Website monitoring | Uptimia\" title=\"Website monitoring | Uptimia\"></a>"))
 	})
