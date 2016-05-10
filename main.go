@@ -13,6 +13,7 @@ import (
 )
 
 const tokenEnv string = "TOKEN"
+const ipEnv string = "OPENSHIFT_GO_IP"
 const portEnv string = "OPENSHIFT_GO_PORT"
 
 type State uint
@@ -28,6 +29,11 @@ func main() {
 	token := os.Getenv(tokenEnv)
 	if token == "" {
 		log.Panic("TOKEN ENV NOT FOUND!")
+	}
+
+	ip := os.Getenv(ipEnv)
+	if ip == "" {
+		log.Panic("PORT ENV NOT FOUND!")
 	}
 
 	port := os.Getenv(portEnv)
@@ -60,12 +66,12 @@ func main() {
 	processStopedBySignal()
 
 	// Manners allows you to shut your Go webserver down gracefully, without dropping any requests
-	err = manners.ListenAndServe(":"+port, mux)
+	err = manners.ListenAndServe(ip+":"+port, mux)
 	if err != nil {
 		log.Panic(err)
 		return
 	} else {
-		log.Println("Server start at port :" + port)
+		log.Println("Server listening at " + ip + ":" + port)
 	}
 	defer manners.Close()
 	// END Web Server
