@@ -32,7 +32,7 @@ func main() {
 	}
 
 	// Start this webserver just to never puts this instance idle
-	StartWebServer()
+	go StartWebServer()
 
 	bot.Debug = false
 
